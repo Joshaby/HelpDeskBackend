@@ -17,9 +17,6 @@ public enum Prioridade {
     final String descricao;
 
     public static Prioridade toEnum(Integer id) {
-        if (id == null) {
-            return null;
-        }
         return Arrays.stream(Prioridade.values()).filter(perfil -> Objects.equals(perfil.getId(), id))
                 .findFirst().orElse(null);
     }

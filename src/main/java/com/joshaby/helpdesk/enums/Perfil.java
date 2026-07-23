@@ -17,9 +17,6 @@ public enum Perfil {
     final String descricao;
 
     public static Perfil toEnum(Integer id) {
-        if (id == null) {
-            return null;
-        }
         return Arrays.stream(Perfil.values()).filter(perfil -> Objects.equals(perfil.getId(), id))
                 .findFirst().orElse(null);
     }

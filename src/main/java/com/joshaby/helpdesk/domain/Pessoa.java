@@ -17,16 +17,13 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode
 
 @Entity
+@DiscriminatorColumn(name = "tipo_pessoa")
 public abstract class Pessoa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    protected String cpf;
 
     protected String nome;
-
-    @Column(unique = true)
-    protected String cpf;
 
     @Column(unique = true)
     protected String email;
@@ -34,7 +31,8 @@ public abstract class Pessoa {
     protected String senha;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "PERFIS")
+    @CollectionTable(name = "perfis")
+    @Column(name = "perfil_id")
     protected Set<Integer> perfis = new HashSet<>();
 
     @JsonFormat(pattern = "dd/MM/yyyy")
